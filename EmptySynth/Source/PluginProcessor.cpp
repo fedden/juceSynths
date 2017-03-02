@@ -36,6 +36,20 @@ EmptySynthAudioProcessor::~EmptySynthAudioProcessor()
 }
 
 //==============================================================================
+void IncrediblySimpleFmsynthAudioProcessorEditor::sliderValueChanged (Slider* slider)
+{
+    /* Here is how I set parameters.
+    if (slider->getName() == "ModIndex")
+    {
+        setParameterValue("ModIndex", modulationIndex.getValue());
+    }
+    else if (slider->getName() == "ModFreqRatio")
+    {
+        setParameterValue("ModFreqRatio", modulationFrequencyRatio.getValue());
+    }
+    */
+}
+
 const String EmptySynthAudioProcessor::getName() const
 {
     return JucePlugin_Name;

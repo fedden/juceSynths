@@ -18,20 +18,29 @@
 //==============================================================================
 /**
 */
-class EmptySynthAudioProcessorEditor  : public AudioProcessorEditor
+class EmptySynthAudioProcessorEditor  : public AudioProcessorEditor,
+                                        public Slider::Listener
 {
 public:
     EmptySynthAudioProcessorEditor (EmptySynthAudioProcessor&);
     ~EmptySynthAudioProcessorEditor();
 
     //==============================================================================
-    void paint (Graphics&) override;
-    void resized() override;
+    void                     paint (Graphics&) override;
+    void                     resized() override;
+    void                     sliderValueChanged (Slider*) override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
+    void                     timerCallback() override;
+    AudioProcessorParameter* getParameter (const String& paramId);
+    float                    getParameterValue (const String& paramId);
+    void                     setParameterValue (const String& paramId, float value);
+
     EmptySynthAudioProcessor& processor;
+
+    /* Insert sliders here!
+     * Slider modulationIndex;
+     */
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EmptySynthAudioProcessorEditor)
 };
